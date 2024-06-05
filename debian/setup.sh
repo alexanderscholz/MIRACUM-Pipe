@@ -33,7 +33,7 @@ function install_R()
   echo "deb http://cloud.r-project.org/bin/linux/debian buster-cran40/" >> /etc/apt/sources.list && \
   apt-key add "/opt/MIRACUM-Pipe/debian/r_key.asc"
   #apt-key adv --keyserver keyserver.ubuntu.com --recv-key B8F25A8A73EACF41
-  apt-get update && apt-get install -y --no-install-recommends -t buster-cran40 r-base-dev
+  apt-get update && apt-get install -y --no-install-recommends r-base-dev=3.5.2-1
   R CMD javareconf
 }
 
@@ -60,5 +60,5 @@ apt-get install -y --no-install-recommends build-essential gcc-multilib libc-dev
   install_R && \
   install_texlive && \
   python3 -m pip install wheel && \
-  python3 -m pip install shyaml agfusion sequenza-utils && \
+  python3 -m pip install shyaml agfusion==1.4.1 pyensembl==2.2.9 gtfparse==1.3.0 sequenza-utils && \
   apt-get -y autoremove
